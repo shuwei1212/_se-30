@@ -1,0 +1,22 @@
+{
+  "name": "quotedesk",
+  "version": "1.0.0",
+  "description": "A local-first quotation and pricing workspace for freelancers, built with Node.js built-in modules.",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "quotation",
+    "invoice",
+    "freelancer",
+    "pricing",
+    "taiwan"
+  ],
+  "license": "MIT"
+}
