@@ -1,0 +1,17 @@
+{
+  "name": "mycurl",
+  "version": "1.0.0",
+  "description": "A small curl-like HTTP client built only with Node.js built-in modules",
+  "type": "module",
+  "bin": {
+    "mycurl": "./src/cli.js"
+  },
+  "scripts": {
+    "start": "node src/cli.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}
