@@ -1,0 +1,15 @@
+{
+  "name": "knu-sis-demo",
+  "version": "1.0.0",
+  "description": "A small university student information system demo built with Node.js built-in modules",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}
