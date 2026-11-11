@@ -1,0 +1,22 @@
+{
+  "name": "tasklane",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "TaskLane: a small task board with unit, system, and Playwright E2E tests",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test tests/unit/validation.test.js tests/unit/store.test.js tests/system/api.test.js",
+    "test:unit": "node --test tests/unit/validation.test.js tests/unit/store.test.js",
+    "test:system": "node --test tests/system/api.test.js",
+    "test:e2e": "playwright test",
+    "test:all": "npm test && npm run test:e2e"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0"
+  }
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TaskLane：用三層測試守護的小型任務看板。">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#101b16">
+  <title>TaskLane · 三層測試任務看板</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要內容</a>
+
+  <header class="hero">
+    <div class="shell hero-inner">
+      <div>
+        <p class="eyebrow">TEST LAB / 07</p>
+        <h1>TaskLane</h1>
+        <p class="lede">一個用單元測試、系統測試與無頭瀏覽器 E2E 測試守住的小型任務看板。</p>
+      </div>
+      <div class="layer-pills" aria-label="測試層級">
+        <span>Unit</span>
+        <span>System</span>
+        <span>E2E</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="shell">
+    <section class="stats" aria-label="任務統計">
+      <article class="stat-card">
+        <span class="stat-value" data-testid="total-count">0</span>
+        <span class="stat-label">全部任務</span>
+      </article>
+      <article class="stat-card stat-active">
+        <span class="stat-value" data-testid="active-count">0</span>
+        <span class="stat-label">進行中</span>
+      </article>
+      <article class="stat-card stat-done">
+        <span class="stat-value" data-testid="done-count">0</span>
+        <span class="stat-label">已完成</span>
+      </article>
+    </section>
+
+    <div class="columns">
+      <section class="panel form-panel" aria-labelledby="form-title">
+        <p class="eyebrow">Capture</p>
+        <h2 id="form-title">新增任務</h2>
+        <form id="task-form" novalidate>
+          <label for="title">任務標題</label>
+          <input
+            id="title"
+            name="title"
+            type="text"
+            maxlength="80"
+            required
+            autocomplete="off"
+            placeholder="例如：跑完三層測試"
+            aria-describedby="title-hint"
+          >
+          <p id="title-hint" class="hint">1–80 個字。送出後會寫入伺服器的 JSON 資料檔。</p>
+
+          <label for="priority">優先順序</label>
+          <select id="priority" name="priority">
+            <option value="low">低</option>
+            <option value="medium" selected>中</option>
+            <option value="high">高</option>
+          </select>
+
+          <button id="submit-button" class="primary" type="submit">新增任務</button>
+          <p id="form-error" class="form-error" role="alert" hidden></p>
+        </form>
+      </section>
+
+      <section class="panel board" aria-labelledby="board-title">
+        <div class="board-head">
+          <div>
+            <p class="eyebrow">Inbox</p>
+            <h2 id="board-title">任務列表</h2>
+          </div>
+          <div class="filters" role="group" aria-label="篩選任務">
+            <button type="button" class="filter is-active" data-filter="all" aria-pressed="true">全部</button>
+            <button type="button" class="filter" data-filter="active" aria-pressed="false">進行中</button>
+            <button type="button" class="filter" data-filter="done" aria-pressed="false">已完成</button>
+          </div>
+        </div>
+
+        <p id="status" class="status" role="status" aria-live="polite" hidden></p>
+        <ul id="task-list" class="task-list" aria-label="任務列表"></ul>
+        <div id="empty" class="empty" hidden>
+          <strong>目前沒有任務</strong>
+          <span>先從左邊新增一筆，讓三層測試有東西可以守護。</span>
+        </div>
+      </section>
+    </div>
+
+    <section class="layers" aria-labelledby="layers-title">
+      <div class="layers-head">
+        <p class="eyebrow">Testing pyramid</p>
+        <h2 id="layers-title">三層測試，各自負責不同風險</h2>
+      </div>
+      <div class="layer-grid">
+        <article class="layer-card">
+          <span class="layer-index">01</span>
+          <h3>單元測試 · Unit</h3>
+          <p>直接測 server 的 validation 與 store：標題正規化、priority 驗證、JSON 持久化、完成狀態切換。</p>
+          <code>npm run test:unit</code>
+        </article>
+        <article class="layer-card">
+          <span class="layer-index">02</span>
+          <h3>系統測試 · System</h3>
+          <p>啟動真正的 HTTP server，用 fetch 打 web API，檢查 status code、JSON 格式、CRUD 與錯誤處理。</p>
+          <code>npm run test:system</code>
+        </article>
+        <article class="layer-card">
+          <span class="layer-index">03</span>
+          <h3>E2E · Playwright</h3>
+          <p>用無頭 Chrome 操作真正的 UI：新增、勾選完成、切換篩選、重新整理、刪除，從使用者角度驗證。</p>
+          <code>npm run test:e2e</code>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <p>TaskLane · Node.js server + vanilla client + Playwright</p>
+      <p>07 / 網站測試</p>
+    </div>
+  </footer>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
