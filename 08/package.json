@@ -1,0 +1,25 @@
+{
+  "name": "quotedesk-studio",
+  "version": "2.0.0",
+  "description": "A local-first quotation, margin and follow-up workspace for freelancers, built with Node.js built-in modules.",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test test/domain.test.js test/db.test.js test/app.test.js",
+    "check": "node --check src/server.js && node --check src/app.js && node --check src/db.js && node --check src/domain.js && node --check src/views.js && node --check src/seed.js && node --check public/app.js && node --check public/domain.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "quotation",
+    "invoice",
+    "freelancer",
+    "pricing",
+    "margin",
+    "follow-up",
+    "taiwan"
+  ],
+  "license": "MIT"
+}
