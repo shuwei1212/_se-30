@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="DockerBoard">
+  <rect width="64" height="64" rx="15" fill="#0d1b2d"/>
+  <rect x="12" y="13" width="40" height="10" rx="3" fill="#3ce0a8"/>
+  <rect x="12" y="27" width="40" height="10" rx="3" fill="#63b3ff"/>
+  <rect x="12" y="41" width="40" height="9" rx="3" fill="#93a9c2"/>
+</svg>
